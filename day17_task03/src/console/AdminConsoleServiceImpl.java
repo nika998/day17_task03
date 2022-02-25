@@ -4,22 +4,22 @@ import java.util.Map;
 
 import user.UserInterface;
 
-public class AdminConsoleCommands implements AdminConsoleCommandsInterface {
+public class AdminConsoleServiceImpl implements AdminConsoleService {
 	private final UserInterface admin;
 	private final Map<String, UserInterface> userList;
 
-	public AdminConsoleCommands(UserInterface user, Map<String, UserInterface> userList) {
+	public AdminConsoleServiceImpl(UserInterface user, Map<String, UserInterface> userList) {
 		super();
 		this.admin = user;
 		this.userList=userList;
 	}
 	
 	@Override
-	public boolean create(UserInterface create){
-		if (!userList.isEmpty() && userList.get(create.getUserName())!=null) {
+	public boolean create(UserInterface newUser){
+		if (!userList.isEmpty() && userExists(newUser.getUserName())) {
 			return false;
 		}
-		userList.put(create.getUserName(), create);
+		userList.put(newUser.getUserName(), newUser);
 		return true;
 	}
 	
@@ -46,5 +46,14 @@ public class AdminConsoleCommands implements AdminConsoleCommandsInterface {
 	@Override
 	public UserInterface delete(String  userName) {
 		return userList.remove(userName);
+	}
+	
+	@Override
+	public boolean userExists(String userName) {
+		return userList.containsKey(userName);
+	}
+	
+	public UserInterface getAdmin() {
+		return admin;
 	}
 }
