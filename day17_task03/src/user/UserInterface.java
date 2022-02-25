@@ -4,6 +4,8 @@ public interface UserInterface {
 	
 	void getPassword();
 	
+	Integer getId();
+	
 	String getUserDetails();
 	
 	UserInterface update(Integer id, UserInterface updatedUser);
