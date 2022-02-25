@@ -5,46 +5,46 @@ import java.util.Map;
 import user.UserInterface;
 
 public class AdminConsoleCommands implements AdminConsoleCommandsInterface {
-	private final UserInterface user;
-	private final Map<Integer, UserInterface> userList;
+	private final UserInterface admin;
+	private final Map<String, UserInterface> userList;
 
-	public AdminConsoleCommands(UserInterface user, Map<Integer, UserInterface> userList) {
+	public AdminConsoleCommands(UserInterface user, Map<String, UserInterface> userList) {
 		super();
-		this.user = user;
+		this.admin = user;
 		this.userList=userList;
 	}
 	
 	@Override
 	public boolean create(UserInterface create){
-		if (!userList.isEmpty() && userList.get(create.getId())!=null) {
+		if (!userList.isEmpty() && userList.get(create.getUserName())!=null) {
 			return false;
 		}
-		userList.put(create.getId(), create);
+		userList.put(create.getUserName(), create);
 		return true;
 	}
 	
 	@Override
 	public void displayAll() {
 		System.out.println("All users");
-		for (Integer user:userList.keySet()) {
+		for (String user:userList.keySet()) {
 			System.out.println(userList.get(user));
 		}
 	}
 	
 	@Override
-	public void displayUser(Integer userId) {
-		UserInterface user = userList.get(userId);
+	public void displayUser(String userName) {
+		UserInterface user = userList.get(userName);
 		String message = user==null? "User does not exist" : user.getUserDetails();
 		System.out.println(message);
 	}
 	
 	@Override
-	public void editUser(Integer id, UserInterface updatedUser) {
-		userList.get(id).update(id, updatedUser);
+	public void editUser(String userName, UserInterface updatedUser) {
+		userList.get(userName).update(userName, updatedUser);
 	}
 	
 	@Override
-	public UserInterface delete(Integer userId) {
-		return userList.remove(userId);
+	public UserInterface delete(String  userName) {
+		return userList.remove(userName);
 	}
 }

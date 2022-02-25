@@ -8,10 +8,10 @@ public interface AdminConsoleCommandsInterface {
 
 	void displayAll();
 
-	void displayUser(Integer userId);
+	void displayUser(String userName);
 
-	void editUser(Integer id, UserInterface updatedUser);
+	void editUser(String userName, UserInterface updatedUser);
 
-	UserInterface delete(Integer userId);
+	UserInterface delete(String userName);
 
 }
