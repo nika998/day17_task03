@@ -2,20 +2,31 @@ package domain;
 
 public class User {
 	
+	private int userID;
 	private String name;
 	private String surname;
 	private String username;
 	private String password;
 	private Role role;
 	
-	public User(String name, String surname, String username, String password,
+	public User(int userID, String name, String surname, String username, String password,
 			Role role) {
 		super();
+		this.userID = userID;
 		this.name = name;
 		this.surname = surname;
 		this.username = username;
 		this.password = password;
 		this.role = role;
+	}
+	
+	
+	public int getUserID() {
+		return userID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 
 	public String getName() {
