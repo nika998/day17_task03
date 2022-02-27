@@ -2,7 +2,7 @@ package user;
 
 public interface UserInterface {
 	
-	void getPassword();
+	String getPassword();
 	
 	String getUserName();
 	
