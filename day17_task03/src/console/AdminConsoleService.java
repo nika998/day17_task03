@@ -15,5 +15,7 @@ public interface AdminConsoleService {
 	UserInterface delete(String userName);
 
 	boolean userExists(String userName);
+	
+	UserInterface getAdmin();
 
 }

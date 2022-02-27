@@ -53,6 +53,7 @@ public class AdminConsoleServiceImpl implements AdminConsoleService {
 		return userList.containsKey(userName);
 	}
 	
+	@Override
 	public UserInterface getAdmin() {
 		return admin;
 	}
