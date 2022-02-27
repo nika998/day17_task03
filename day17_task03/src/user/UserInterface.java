@@ -1,5 +1,7 @@
 package user;
 
+import domain.Role;
+
 public interface UserInterface {
 	
 	String getPassword();
@@ -7,6 +9,8 @@ public interface UserInterface {
 	String getUserName();
 	
 	String getUserDetails();
+	
+	Role getRole();
 	
 	UserInterface update(String userName, UserInterface updatedUser);
 
